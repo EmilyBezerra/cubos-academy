@@ -37,7 +37,7 @@ servidor.get('/subtrair', controladorSubtrair);
 servidor.get('/multiplicar', controladorMultiplicar);
 servidor.get('/dividir', controladorDividir);
 
-servidor.listen(3000, () => {
+servidor.listen(process.env.PORT, () => {
     console.log('Servidor rodando na porta 3000');
 });
 
