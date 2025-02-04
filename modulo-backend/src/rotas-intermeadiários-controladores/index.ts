@@ -1,18 +1,17 @@
+import { intermediarioSair, intermediarioGeral } from './intermediario';
 import 'dotenv/config';
 import express from 'express';
+import { rotaPadrao, rotaUsuarioComParametro, rotaUsuarios } from './controladores';
 
 const servidor = express();
 
+servidor.use(intermediarioGeral) 
 
-servidor.get('/', (req, res) => {
-    console.log(req)
-    return res.send('Servidor está ok');
-});
+servidor.get('/', rotaPadrao);
 
-servidor.get('/usuarios', (req, res) => {
-    console.log(req)
-    return res.send('Servidor está ok');
-});
+servidor.get('/usuarios', rotaUsuarios );
+
+servidor.get('/usuarios/:nome', intermediarioSair, rotaUsuarioComParametro);
 
 // Inicia o servidor na porta configurada no arquivo .env
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
