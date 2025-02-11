@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { detalhar, listarInstrutores } from './controladores/intrutores';
+import {criarIntrutuor, detalharInstrutor, listarInstrutores } from './controladores/intrutores';
 
 const rotas = Router()
 
@@ -7,10 +7,13 @@ const rotas = Router()
 rotas.get('/instrutores', listarInstrutores);
 
 // Detalhar as finformações de um intrutor 
-rotas.get('/instrutores/:id', detalhar);
+rotas.get('/instrutores/:id', detalharInstrutor);
 
 // Cadastrar instrutor 
+rotas.post('/instrutores', criarIntrutuor);
+
 // Editar um instrutor 
+
 // Excluir um intrutor 
 
 // Cadastrar uma aula para um instrutor 

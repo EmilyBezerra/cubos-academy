@@ -28,7 +28,7 @@ export const listarInstrutores = (req: Request, res: Response) => {
     return res.status(200).json(instrutores)
 };
 
-export const detalhar = (req: Request, res: Response) => {
+export const detalharInstrutor = (req: Request, res: Response) => {
     const {id} = req.params
 
     const instrutor = instrutores.find((item) => {
@@ -39,7 +39,20 @@ export const detalhar = (req: Request, res: Response) => {
         return res.status(404).json({
             mensagem: 'Instrutor não encontrado(a)'
         });
-    }
-    return res.status(200).json(instrutor)
+    };
+    return res.status(200).json(instrutor);
 };
 
+export const criarIntrutuor = (req: Request, res: Response) => {
+    const {nome, email} = req.body
+
+    const novoInstrutor = {
+        id: 4,
+        nome,
+        email
+    }; 
+
+    instrutores.push(novoInstrutor);
+
+    return res.status(201).json(novoInstrutor)
+};
