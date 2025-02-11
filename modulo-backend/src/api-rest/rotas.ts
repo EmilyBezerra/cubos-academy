@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {criarIntrutuor, detalharInstrutor, listarInstrutores } from './controladores/intrutores';
+import {atualizarEmail, atualizarIntrutuor, criarIntrutuor, deletarIntrutuor, detalharInstrutor, listarInstrutores } from './controladores/intrutores';
 
 const rotas = Router()
 
@@ -13,10 +13,14 @@ rotas.get('/instrutores/:id', detalharInstrutor);
 rotas.post('/instrutores', criarIntrutuor);
 
 // Editar um instrutor 
+rotas.put('/instrutores/:id', atualizarIntrutuor);
 
 // Excluir um intrutor 
+rotas.delete('/instrutores/:id', deletarIntrutuor)
 
 // Cadastrar uma aula para um instrutor 
+rotas.patch('/instrutores/:id/alterarEmail', atualizarEmail);
+
 // Excluir uma aula para um instrutor 
 
 
