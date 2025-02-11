@@ -1,34 +1,11 @@
 import { Request, Response } from "express";
-
-type TIntrutores = {
-    id: number,
-    nome: string,
-    email: string;
-};
-
-let proximoId = 1
-
-const instrutores: TIntrutores[] = [ 
-    {
-        id: proximoId++,
-        nome:  'Guido',
-        email: 'guido@email.com'
-    },
-    {
-        id: proximoId++,
-        nome:  'Maria',
-        email: 'maria@email.com'
-    },
-    {
-        id: proximoId++,
-        nome:  'João',
-        email: 'joao@email.com'
-    },
-];
+import {instrutores, proximoId} from '../bancoDeDados'
 
 export const listarInstrutores = (req: Request, res: Response) => {
     return res.status(200).json(instrutores)
 };
+
+let Id = proximoId +1
 
 export const detalharInstrutor = (req: Request, res: Response) => {
     const {id} = req.params
@@ -49,7 +26,7 @@ export const criarIntrutuor = (req: Request, res: Response) => {
     const {nome, email} = req.body
 
     const novoInstrutor = {
-        id: proximoId ++,
+        id: Id ++,
         nome,
         email
     }; 

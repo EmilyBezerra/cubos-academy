@@ -18,10 +18,7 @@ rotas.put('/instrutores/:id', atualizarIntrutuor);
 // Excluir um intrutor 
 rotas.delete('/instrutores/:id', deletarIntrutuor)
 
-// Cadastrar uma aula para um instrutor 
+// Atualizar email 
 rotas.patch('/instrutores/:id/alterarEmail', atualizarEmail);
-
-// Excluir uma aula para um instrutor 
-
 
 export default rotas;
