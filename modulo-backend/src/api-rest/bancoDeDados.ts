@@ -9,7 +9,7 @@ type TAula = {
     nome: string
 }
 
-export let proximoId = 1
+let proximoId = 1
 
 export const instrutores: TIntrutores[] = [ 
     {
