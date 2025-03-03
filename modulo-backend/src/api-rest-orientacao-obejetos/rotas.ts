@@ -1,9 +1,10 @@
 import {Router} from 'express';
+import AutorControlador from './controladores/AutorControlador';
 
 const rotas = Router();
 
-rotas.get('/', (req, res) => {
-    res.json('Ok')
-});
+const autorControlador = new AutorControlador();
+
+rotas.get('/listarAutores', autorControlador.listar) 
 
 export default rotas;

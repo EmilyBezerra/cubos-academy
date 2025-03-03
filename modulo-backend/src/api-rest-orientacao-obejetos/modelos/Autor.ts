@@ -1,22 +1,18 @@
-import {v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 
-type TAuttor = {
+type TAutor = {
     nome: string;
     idade: number;
 };
 
 export default class Autor {
-    readonly id: string; 
-    nome: string; 
+    readonly id: string;
+    nome: string;
     idade: number;
 
-    constructor(autor: TAuttor){
-        this.id = this.gerarId();
+    constructor(autor: TAutor) {
+        this.id = uuidv4(); 
         this.nome = autor.nome;
         this.idade = autor.idade;
-    };
-
-    private gerarId(): string{
-        return uuidv4()
-    };
-};
+    }
+}
