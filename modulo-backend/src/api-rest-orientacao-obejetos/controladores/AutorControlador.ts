@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { autores } from "../bancoDeDados";
+import { autores } from './../bancoDeDados';
+import { json, Request, Response } from "express";
 import Autor from "../modelos/Autor";
 
 
@@ -45,4 +45,30 @@ export default class AutorControlador {
         mensagem: 'Autor criado com sucesso ' 
     })
     };
+
+    editar(req: Request, res: Response) {
+        const {id} = req.params
+        const {nome, idade} = req.body 
+
+        if(!nome || !idade) {
+            return res.send(400).json({
+                mensagem: 'O nome e a idade do autor são obrigatórios'
+            });
+        };
+
+        const autor = autores.find((elemento) => {
+            return elemento.id === id
+        });
+
+        if(!autor) {
+            return res.status(404).json({
+                mensagem: 'Autor não encontrado!'
+            });
+        };
+
+        autor.nome = nome;
+        autor.idade = idade;
+
+        return res.status(204).send()
+    }
 }
